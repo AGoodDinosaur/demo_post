@@ -1,0 +1,96 @@
+<style>
+  h1{
+  text-align: center;
+  padding: 10px;
+  }
+  body
+  {
+      margin: 0;
+      padding: 0;
+      background-color:#6abadeba;
+      font-family: 'Arial';
+  }
+.comment{
+        width: 382px;
+        overflow: hidden;
+        margin: auto;
+        text-align: center;
+        margin: 20 0 0 450px;
+        padding: 80px;
+        background: #23463f;
+        border-radius: 15px ;
+
+}
+
+.like{
+        width: 382px;
+        overflow: hidden;
+        margin: auto;
+        text-align: center;
+        margin: 20 0 0 10px;
+        padding: 80px;
+        background: #23463f;
+        border-radius: 15px ;
+
+}
+.center {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .btn_link {
+    text-decoration: none;
+    border: 1px solid #000;
+    background-color: green;
+  }
+.post {
+  width: 382px;
+        overflow: hidden;
+        margin: auto;
+        margin: 20 0 0 450px;
+        padding: 80px;
+        text-align: center;
+        background: #23463f;
+        border-radius: 15px ;
+        justify-content: center;
+}
+  .btn_link:link, .btn_link:visited {
+    color: #6abadeba;
+  }
+
+</style>
+
+<h1><%= @post.title%></h1>
+<div class="post">
+  <br />
+  <% if @post.avatar.attached? %>
+    <%= image_tag @post.avatar, width: "200px" , height: "200px" %>
+    <br />
+    <br />
+  <% end %>
+  <br />
+  <br />
+  <%= @post.content%>
+  <br />
+  <br />
+  <div class="center">
+  <%= link_to "Edit", edit_post_path(@post), class: 'btn_link' %>
+  <br />
+  <br />
+  <%= link_to "Delete", @post, data: {"turbo-method": :delete, turbo_confirm: "Are you sure?"}, class: 'btn_link' %>
+  <br />
+  <br />
+  <%= link_to "Back", posts_path , class: 'btn_link' %>
+  </div>
+</div>
+<br />
+<br />
+  <%= render partial: "likes", locals: {post: @post}%>
+
+  <div class="comment">
+      <strong><%= @post.comments.count %></strong> Comments 
+    <%= render @post.comments %>
+      <hr />
+      <h2>Create comment</h2>
+      <%= render 'comments/form' %>
+  </div>

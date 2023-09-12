@@ -1,0 +1,92 @@
+<style>
+  p,h1,h2,a{
+  text-align: center;
+  padding: 10px;
+  }
+  body
+  {
+      margin: 0;
+      padding: 0;
+      background-color:#6abadeba;
+      font-family: 'Arial';
+  }
+  .post{
+        width: 382px;
+        overflow: hidden;
+        margin: auto;
+        margin: 20 0 0 450px;
+        padding: 80px;
+        text-align: center;
+        background: #23463f;
+        border-radius: 15px ;
+        justify-content: center;
+
+}
+  .btn_link {
+    text-decoration: none;
+    border: 1px solid #000;
+    background-color: green;
+  }
+
+  .btn_link:link, .btn_link:visited {
+    color: #6abadeba;
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    
+  }
+  </style>
+  
+
+
+  <h1>DINO BLOG</h1>
+<section class="hero is-primary is-medium">
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu"></div>
+        <div class="navbar-end center">
+          <% if user_signed_in? %>
+            <%= link_to "Create New Post", new_post_path, class: 'btn_link' %>
+          <% else %>
+            <%= link_to "Log In", new_user_session_path, class: 'btn_link' %>
+            <%= link_to "Sign Up", new_user_registration_path, class: 'btn_link' %>
+          <% end %>
+            <%= link_to "Back", root_path, class: 'btn_link' %>
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+
+
+
+<h2>All Post</h2>
+<body>
+        <% @posts.each do |post| %>
+         <div class="post">
+           <%= link_to post.title, post %>
+           <br />
+           <br />
+           <br />
+           <%= image_tag post.avatar, width: "200px" , height: "200px" if post.avatar.attached? %>  
+           <br />
+           <br />
+           <br />       
+           <%= post.content %>
+         </div>
+         <br />
+         <br />
+        <% end %>
+ 
+</body>

@@ -1,0 +1,154 @@
+<!-- <h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div> -->
+
+<style>
+  body
+{
+    margin: 0;
+    padding: 0;
+    background-color:#6abadeba;
+    font-family: 'Arial';
+}
+.edit{
+        width: 382px;
+        overflow: hidden;
+        margin: auto;
+        margin: 20 0 0 450px;
+        padding: 80px;
+        background: #23463f;
+        border-radius: 15px ;
+
+}
+h1{
+    text-align: center;
+    color: #277582;
+    padding: 20px;
+}
+label{
+    color: #08ffd1;
+    font-size: 17px;
+}
+#email{
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+}
+#Pass{
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+
+}
+#log{
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 17px;
+    padding-left: 7px;
+    color: blue;
+
+
+}
+
+.btn_link {
+    text-decoration: none;
+    border: 1px solid #000;
+    background-color: green;
+  }
+
+.btn_link:link, .btn_link:visited {
+    color: #6abadeba;
+  }
+
+.center {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    text-align: center;
+    color: #277582;
+    padding: 20px;
+  }
+</style>
+<div class="edit">
+  <h1>Edit User's Information</h1>
+<body>
+  <div class="center">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, id: "edit") do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+         <%= f.label :email, "Emai" %>
+        <br />
+        <br />
+         <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "email"%>
+       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+       <% end %>
+       <br />
+       <br />
+         <%= f.label :password %>
+        <br />
+         <%= f.password_field :password, autocomplete: "new-password", id: "Pass" %>
+         <% if @minimum_password_length %>
+         <% end %>
+        <br />
+        <br />
+         <%= f.label :password_confirmation %>
+        <br />
+         <%= f.password_field :password_confirmation, autocomplete: "new-password", id: "Pass" %>
+        <br />
+        <br />
+         <%= f.label :current_password %>
+        <br />
+         <%= f.password_field :current_password, autocomplete: "current-password", id: "Pass" %>
+        <br />
+        <br />
+         <%= f.submit "Update", class: 'btn_link' %>
+        <br />
+        <br />
+         <%= link_to "Back", :back, class: 'btn_link' %>
+    <% end %>
+  </div>
+       <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: 'btn_link'%>
+</body>

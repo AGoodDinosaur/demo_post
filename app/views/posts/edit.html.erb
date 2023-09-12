@@ -1,0 +1,63 @@
+<style>
+  body
+  {
+      margin: 0;
+      padding: 0;
+      background-color:#6abadeba;
+      font-family: 'Arial';
+  }
+  .center {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 382px;
+        overflow: hidden;
+        margin: auto;
+        margin: 20 0 0 450px;
+        padding: 80px;
+        background: #23463f;
+        border-radius: 15px ;
+  }
+  .btn_link {
+    text-decoration: none;
+    border: 1px solid #000;
+    background-color: green;
+  }
+
+  .btn_link:link, .btn_link:visited {
+    color: #6abadeba;
+  }
+  h1{
+  text-align: center;
+  padding: 10px;
+  }
+</style>
+
+<body>
+  <h1>EDIT POST</h1>
+  <div class="center">  
+    <%= simple_form_for @post do |f| %> 
+        <br />
+        <br />
+        <%= f.input :title, input_html: { class: 'input'}, wrapper: false, label_html: {class: 'label'}%>
+        <br />
+        <br />
+        <%= f.input :content, input_html: { class: 'texterea'}, wrapper: false, label_html: {class: 'label'}%> 
+        <br />
+        <br />
+        <%= f.file_field :avatar %>
+        <br />
+        <br />
+        <% f.text_field :avatar %>
+        <%= f.button :submit , class: "button is-primary", class: 'btn_link'%>
+        <br /> 
+        <br />
+        <%= link_to "Delete", @post, data: {"turbo-method": :delete, turbo_confirm: "Are you sure? "}, class: 'btn_link'%>  
+        <br />   
+        <br />   
+        <%= link_to "Back", post_path, class: 'btn_link' %>
+    <% end %>
+  </div>
+
+
+</body>

@@ -1,0 +1,147 @@
+<!-- <h2>Sign up</h2>
+
+ <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %> -->
+
+<style>
+  body
+{
+    margin: 0;
+    padding: 0;
+    background-color:#6abadeba;
+    font-family: 'Arial';
+}
+.sign_up{
+        width: 382px;
+        overflow: hidden;
+        margin: auto;
+        margin: 20 0 0 450px;
+        padding: 80px;
+        background: #23463f;
+        border-radius: 15px ;
+
+}
+h1{
+    text-align: center;
+    color: #277582;
+    padding: 20px;
+}
+label{
+    color: #08ffd1;
+    font-size: 17px;
+}
+#email{
+    width: 300px;
+    height: 35px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+}
+#Pass{
+    width: 300px;
+    height: 35px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+
+}
+#log{
+    width: 300px;
+    height: 35px;
+    border: none;
+    border-radius: 17px;
+    padding-left: 7px;
+    color: blue;
+
+
+}
+
+.btn_link {
+    text-decoration: none;
+    border: 1px solid #000;
+    background-color: green;
+  }
+.btn_link:link, .btn_link:visited {
+    color: #6abadeba;
+  }
+
+.center {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    text-align: center;
+    color: #277582;
+    padding: 20px;
+  }
+
+</style>
+<body>
+  <div class="sign_up">
+  <div class="container">
+    <h1>Sign Up</h1>
+    <p>Please fill in this form to create an account.</p>
+
+    <div class="center">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+       <%= render "devise/shared/error_messages", resource: resource %>
+
+        <%= f.label :email,"Your email" %>
+        <br />
+        <br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",id: "email" %>
+        <br />
+        <br />
+        <%= f.label :password, "Pasword", id: "Pass" %>
+        <% if @minimum_password_length %>
+        <em><% @minimum_password_length %></em>
+        <% end %>
+        <br />
+        <br />
+        <%= f.password_field :password, autocomplete: "new-password", id: "Pass" %>
+        <br />
+        <br />
+        <%= f.label :password_confirmation, "Repeat Password" %>
+        <br />
+        <br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",id: "Pass"  %><br />
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      </label><br />
+
+        <%= f.submit "Sign up", class: 'btn_link'  %>
+        <br />
+        <br />
+        <%= link_to "Cancel", new_user_session_path, class: 'btn_link' %>
+        <br />
+        <br />
+
+      <% end %> 
+    </div>
+
+  </div>
+</div>
+</body>
+<%= render "devise/shared/links" %>

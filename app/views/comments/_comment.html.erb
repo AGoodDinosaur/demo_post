@@ -1,0 +1,24 @@
+<style>
+    .btn_link {
+    text-decoration: none;
+    border: 1px solid #000;
+    background-color: green;
+  }
+
+  .btn_link:link, .btn_link:visited {
+    color: #6abadeba;
+  }
+</style>
+
+<div class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <%= comment.comment %>
+        </p>
+      </div>
+    </div>
+    <%= link_to "Delete", [comment.post, comment], class: "button is-danger", data: {turbo_confirm: "Are you sure?",turbo_method: :delete}, class: 'btn_link' %>
+  </article>
+</div>

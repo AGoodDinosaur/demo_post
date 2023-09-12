@@ -1,0 +1,5 @@
+
+<div class="like">
+  <h2 class="subtitle is-5"><strong><%= post.likes.count %></strong> Likes </h2>
+  <p><%= button_to "Like", likes_action_path(post_id: post.id), style: "background-color: #{params[:is_like] === "true" ? 'blue' : 'white'}" %></p>
+</div><br /><br />
